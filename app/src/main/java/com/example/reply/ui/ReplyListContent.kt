@@ -30,6 +30,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LargeFloatingActionButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -63,6 +64,8 @@ fun ReplyInboxScreen(
         )
 
         LargeFloatingActionButton(
+            containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+            contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
             onClick = { /*Click Implementation*/ },
             modifier = Modifier
                 .align(Alignment.BottomEnd)
@@ -105,10 +108,10 @@ fun ReplyEmailListContent(
 
 @Composable
 fun ReplyEmailList(
+    modifier: Modifier = Modifier,
     emails: List<Email>,
     emailLazyListState: LazyListState,
     selectedEmail: Email? = null,
-    modifier: Modifier = Modifier,
     navigateToDetail: (Long) -> Unit
 ) {
     LazyColumn(modifier = modifier, state = emailLazyListState) {
@@ -128,13 +131,13 @@ fun ReplyEmailList(
 
 @Composable
 fun ReplyEmailDetail(
+    modifier: Modifier = Modifier,
     email: Email,
     isFullScreen: Boolean = true,
-    modifier: Modifier = Modifier.fillMaxSize(),
     onBackPressed: () -> Unit = {}
 ) {
     LazyColumn(
-        modifier = modifier
+        modifier = modifier.fillMaxSize()
             .padding(top = 16.dp)
     ) {
         item {
